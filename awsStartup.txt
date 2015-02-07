@@ -1,0 +1,451 @@
+09:26:59/ec2 $./spark-ec2 -k sparkeast -i ~/.ssh/sparkeast.pem -s 2 -z us-east-1a -r us-east-1 launch spark2
+Got connection
+Setting up security groups...
+Searching for existing cluster spark2...
+Spark AMI: ami-5bb18832
+Launching instances...
+Launched 2 slaves in us-east-1a, regid = r-9d4476b6
+Launched master in us-east-1a, regid = r-03477528
+Waiting for instances to start up...
+Waiting 120 more seconds...
+Generating cluster's SSH key on master...
+ssh: connect to host ec2-54-234-7-59.compute-1.amazonaws.com port 22: Connection refused
+Error executing remote command, retrying after 30 seconds: Command '['ssh', '-o', 'StrictHostKeyChecking=no', '-i', '/Users/steve/.ssh/sparkeast.pem', '-t', '-t', u'root@ec2-54-234-7-59.compute-1.amazonaws.com', "\n          [ -f ~/.ssh/id_rsa ] ||\n            (ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa &&\n             cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys)\n        "]' returned non-zero exit status 255
+ssh: connect to host ec2-54-234-7-59.compute-1.amazonaws.com port 22: Connection refused
+Error executing remote command, retrying after 30 seconds: Command '['ssh', '-o', 'StrictHostKeyChecking=no', '-i', '/Users/steve/.ssh/sparkeast.pem', '-t', '-t', u'root@ec2-54-234-7-59.compute-1.amazonaws.com', "\n          [ -f ~/.ssh/id_rsa ] ||\n            (ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa &&\n             cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys)\n        "]' returned non-zero exit status 255
+Warning: Permanently added 'ec2-54-234-7-59.compute-1.amazonaws.com,54.234.7.59' (RSA) to the list of known hosts.
+Connection to ec2-54-234-7-59.compute-1.amazonaws.com closed.
+Transferring cluster's SSH key to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ssh: connect to host ec2-54-237-143-174.compute-1.amazonaws.com port 22: Connection refused
+Error 255 while executing remote command, retrying after 30 seconds
+Warning: Permanently added 'ec2-54-237-143-174.compute-1.amazonaws.com,54.237.143.174' (RSA) to the list of known hosts.
+ec2-54-197-40-183.compute-1.amazonaws.com
+Warning: Permanently added 'ec2-54-197-40-183.compute-1.amazonaws.com,54.197.40.183' (RSA) to the list of known hosts.
+Cloning into 'spark-ec2'...
+remote: Counting objects: 1586, done.
+remote: Compressing objects: 100% (760/760), done.
+remote: Total 1586 (delta 553), reused 1568 (delta 542)
+Receiving objects: 100% (1586/1586), 245.17 KiB, done.
+Resolving deltas: 100% (553/553), done.
+Connection to ec2-54-234-7-59.compute-1.amazonaws.com closed.
+Deploying files to master...
+building file list ... done
+root/spark-ec2/ec2-variables.sh
+
+sent 1694 bytes  received 42 bytes  1157.33 bytes/sec
+total size is 1553  speedup is 0.89
+Running setup on master...
+Connection to ec2-54-234-7-59.compute-1.amazonaws.com closed.
+Setting up Spark on ip-10-113-156-41.ec2.internal...
+Setting executable permissions on scripts...
+Running setup-slave on master to mount filesystems, etc...
+Setting up slave on ip-10-113-156-41.ec2.internal...
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB) copied, 1.99861 s, 537 MB/s
+mkswap: /mnt/swap: warning: don't erase bootbits sectors
+        on whole disk. Use -f to force.
+Setting up swapspace version 1, size = 1048572 KiB
+no label, UUID=dca3d6d2-0bd5-4959-ba4e-3e8c792f56fd
+Added 1024 MB swap file /mnt/swap
+SSH'ing to master machine(s) to approve key(s)...
+ec2-54-234-7-59.compute-1.amazonaws.com
+Warning: Permanently added 'ec2-54-234-7-59.compute-1.amazonaws.com,10.113.156.41' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'localhost' (ECDSA) to the list of known hosts.
+Warning: Permanently added 'ip-10-113-156-41.ec2.internal' (ECDSA) to the list of known hosts.
+SSH'ing to other cluster nodes to approve keys...
+ec2-54-237-143-174.compute-1.amazonaws.com
+Warning: Permanently added 'ec2-54-237-143-174.compute-1.amazonaws.com,10.225.33.139' (ECDSA) to the list of known hosts.
+ec2-54-197-40-183.compute-1.amazonaws.com
+Warning: Permanently added 'ec2-54-197-40-183.compute-1.amazonaws.com,10.237.157.26' (ECDSA) to the list of known hosts.
+RSYNC'ing /root/spark-ec2 to other cluster nodes...
+ec2-54-237-143-174.compute-1.amazonaws.com
+id_rsa                                                                                                                        100% 1675     1.6KB/s   00:00
+ec2-54-197-40-183.compute-1.amazonaws.com
+id_rsa                                                                                                                        100% 1675     1.6KB/s   00:00
+Running slave setup script on other cluster nodes...
+ec2-54-237-143-174.compute-1.amazonaws.com
+Setting up slave on ip-10-225-33-139.ec2.internal...
+ec2-54-197-40-183.compute-1.amazonaws.com
+Setting up slave on ip-10-237-157-26.ec2.internal...
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB) copied, 2.23391 s, 481 MB/s
+mkswap: /mnt/swap: warning: don't erase bootbits sectors
+        on whole disk. Use -f to force.
+Setting up swapspace version 1, size = 1048572 KiB
+no label, UUID=9c7e9f46-455b-4422-8b7a-5e90c435a093
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB) copied, 2.83231 s, 379 MB/s
+mkswap: /mnt/swap: warning: don't erase bootbits sectors
+        on whole disk. Use -f to force.
+Setting up swapspace version 1, size = 1048572 KiB
+no label, UUID=749222cc-8739-4842-b5bf-86f4234a7d55
+Added 1024 MB swap file /mnt/swap
+Connection to ec2-54-237-143-174.compute-1.amazonaws.com closed.
+Added 1024 MB swap file /mnt/swap
+Connection to ec2-54-197-40-183.compute-1.amazonaws.com closed.
+Initializing scala
+~ ~/spark-ec2
+Unpacking Scala
+--2014-10-10 16:34:57--  http://s3.amazonaws.com/spark-related-packages/scala-2.10.3.tgz
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 54.231.16.80
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|54.231.16.80|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 30531249 (29M) [application/x-compressed]
+Saving to: ‘scala-2.10.3.tgz’
+
+100%[======================================================================================================================>] 30,531,249  2.99MB/s   in 9.9s
+
+2014-10-10 16:35:07 (2.96 MB/s) - ‘scala-2.10.3.tgz’ saved [30531249/30531249]
+
+~/spark-ec2
+Initializing spark
+~ ~/spark-ec2
+--2014-10-10 16:35:07--  http://s3.amazonaws.com/spark-related-packages/spark-1.1.0-bin-hadoop1.tgz
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 54.231.16.80
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|54.231.16.80|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 177549189 (169M) [application/x-compressed]
+Saving to: ‘spark-1.1.0-bin-hadoop1.tgz’
+
+100%[======================================================================================================================>] 177,549,189 3.30MB/s   in 65s
+
+2014-10-10 16:36:13 (2.59 MB/s) - ‘spark-1.1.0-bin-hadoop1.tgz’ saved [177549189/177549189]
+
+Unpacking Spark
+~/spark-ec2
+Initializing shark
+~ ~/spark-ec2
+ERROR: Unknown Shark version
+~/spark-ec2
+Initializing ephemeral-hdfs
+~ ~/spark-ec2
+--2014-10-10 16:36:16--  http://s3.amazonaws.com/spark-related-packages/hadoop-1.0.4.tar.gz
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 54.231.15.24
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|54.231.15.24|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 62793050 (60M) [application/x-gzip]
+Saving to: ‘hadoop-1.0.4.tar.gz’
+
+100%[======================================================================================================================>] 62,793,050   104MB/s   in 0.6s
+
+2014-10-10 16:36:16 (104 MB/s) - ‘hadoop-1.0.4.tar.gz’ saved [62793050/62793050]
+
+Unpacking Hadoop
+RSYNC'ing /root/ephemeral-hdfs to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+~/spark-ec2
+Initializing persistent-hdfs
+~ ~/spark-ec2
+--2014-10-10 16:36:34--  http://s3.amazonaws.com/spark-related-packages/hadoop-1.0.4.tar.gz
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 54.231.15.24
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|54.231.15.24|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 62793050 (60M) [application/x-gzip]
+Saving to: ‘hadoop-1.0.4.tar.gz’
+
+100%[======================================================================================================================>] 62,793,050   105MB/s   in 0.6s
+
+2014-10-10 16:36:35 (105 MB/s) - ‘hadoop-1.0.4.tar.gz’ saved [62793050/62793050]
+
+Unpacking Hadoop
+RSYNC'ing /root/persistent-hdfs to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+~/spark-ec2
+Initializing spark-standalone
+Initializing tachyon
+~ ~/spark-ec2
+--2014-10-10 16:36:49--  https://s3.amazonaws.com/Tachyon/tachyon-0.4.1-bin.tar.gz
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 54.231.15.24
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|54.231.15.24|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 22751619 (22M) [application/x-gzip]
+Saving to: ‘tachyon-0.4.1-bin.tar.gz’
+
+100%[======================================================================================================================>] 22,751,619  3.43MB/s   in 7.1s
+
+2014-10-10 16:36:57 (3.08 MB/s) - ‘tachyon-0.4.1-bin.tar.gz’ saved [22751619/22751619]
+
+Unpacking Tachyon
+~/spark-ec2
+Initializing ganglia
+Connection to ec2-54-237-143-174.compute-1.amazonaws.com closed.
+Connection to ec2-54-197-40-183.compute-1.amazonaws.com closed.
+Creating local config files...
+Connection to ec2-54-237-143-174.compute-1.amazonaws.com closed.
+Connection to ec2-54-237-143-174.compute-1.amazonaws.com closed.
+Configuring /etc/ganglia/gmond.conf
+Configuring /etc/ganglia/gmetad.conf
+Configuring /etc/httpd/conf.d/ganglia.conf
+Configuring /etc/httpd/conf/httpd.conf
+Configuring /root/mapreduce/hadoop.version
+Configuring /root/mapreduce/conf/core-site.xml
+Configuring /root/mapreduce/conf/slaves
+Configuring /root/mapreduce/conf/mapred-site.xml
+Configuring /root/mapreduce/conf/hdfs-site.xml
+Configuring /root/mapreduce/conf/hadoop-env.sh
+Configuring /root/mapreduce/conf/masters
+Configuring /root/persistent-hdfs/conf/core-site.xml
+Configuring /root/persistent-hdfs/conf/slaves
+Configuring /root/persistent-hdfs/conf/mapred-site.xml
+Configuring /root/persistent-hdfs/conf/hdfs-site.xml
+Configuring /root/persistent-hdfs/conf/hadoop-env.sh
+Configuring /root/persistent-hdfs/conf/masters
+Configuring /root/ephemeral-hdfs/conf/core-site.xml
+Configuring /root/ephemeral-hdfs/conf/slaves
+Configuring /root/ephemeral-hdfs/conf/mapred-site.xml
+Configuring /root/ephemeral-hdfs/conf/hadoop-metrics2.properties
+Configuring /root/ephemeral-hdfs/conf/hdfs-site.xml
+Configuring /root/ephemeral-hdfs/conf/hadoop-env.sh
+Configuring /root/ephemeral-hdfs/conf/masters
+Configuring /root/spark/conf/core-site.xml
+Configuring /root/spark/conf/spark-defaults.conf
+Configuring /root/spark/conf/spark-env.sh
+Configuring /root/tachyon/conf/slaves
+Configuring /root/tachyon/conf/tachyon-env.sh
+Configuring /root/shark/conf/shark-env.sh
+Deploying Spark config files...
+RSYNC'ing /root/spark/conf to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+Setting up scala
+RSYNC'ing /root/scala to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+Setting up spark
+RSYNC'ing /root/spark to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+Setting up shark
+RSYNC'ing /root/shark to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+File or directory /root/hive* doesn't exist!
+Setting up ephemeral-hdfs
+~/spark-ec2/ephemeral-hdfs ~/spark-ec2
+ec2-54-237-143-174.compute-1.amazonaws.com
+Connection to ec2-54-237-143-174.compute-1.amazonaws.com closed.
+ec2-54-197-40-183.compute-1.amazonaws.com
+Connection to ec2-54-197-40-183.compute-1.amazonaws.com closed.
+RSYNC'ing /root/ephemeral-hdfs/conf to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+Formatting ephemeral HDFS namenode...
+Warning: $HADOOP_HOME is deprecated.
+
+14/10/10 16:37:29 INFO namenode.NameNode: STARTUP_MSG:
+/************************************************************
+STARTUP_MSG: Starting NameNode
+STARTUP_MSG:   host = ip-10-113-156-41.ec2.internal/10.113.156.41
+STARTUP_MSG:   args = [-format]
+STARTUP_MSG:   version = 1.0.4
+STARTUP_MSG:   build = https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1.0 -r 1393290; compiled by 'hortonfo' on Wed Oct  3 05:13:58 UTC 2012
+************************************************************/
+14/10/10 16:37:29 INFO util.GSet: VM type       = 64-bit
+14/10/10 16:37:29 INFO util.GSet: 2% max memory = 17.78 MB
+14/10/10 16:37:29 INFO util.GSet: capacity      = 2^21 = 2097152 entries
+14/10/10 16:37:29 INFO util.GSet: recommended=2097152, actual=2097152
+14/10/10 16:37:29 INFO namenode.FSNamesystem: fsOwner=root
+14/10/10 16:37:29 INFO namenode.FSNamesystem: supergroup=supergroup
+14/10/10 16:37:29 INFO namenode.FSNamesystem: isPermissionEnabled=false
+14/10/10 16:37:29 INFO namenode.FSNamesystem: dfs.block.invalidate.limit=100
+14/10/10 16:37:29 INFO namenode.FSNamesystem: isAccessTokenEnabled=false accessKeyUpdateInterval=0 min(s), accessTokenLifetime=0 min(s)
+14/10/10 16:37:29 INFO namenode.NameNode: Caching file names occuring more than 10 times
+14/10/10 16:37:29 INFO common.Storage: Image file of size 110 saved in 0 seconds.
+14/10/10 16:37:30 INFO common.Storage: Storage directory /mnt/ephemeral-hdfs/dfs/name has been successfully formatted.
+14/10/10 16:37:30 INFO namenode.NameNode: SHUTDOWN_MSG:
+/************************************************************
+SHUTDOWN_MSG: Shutting down NameNode at ip-10-113-156-41.ec2.internal/10.113.156.41
+************************************************************/
+Starting ephemeral HDFS...
+./ephemeral-hdfs/setup.sh: line 31: /root/ephemeral-hdfs/sbin/start-dfs.sh: No such file or directory
+Warning: $HADOOP_HOME is deprecated.
+
+starting namenode, logging to /mnt/ephemeral-hdfs/logs/hadoop-root-namenode-ip-10-113-156-41.ec2.internal.out
+ec2-54-237-143-174.compute-1.amazonaws.com: Warning: $HADOOP_HOME is deprecated.
+ec2-54-237-143-174.compute-1.amazonaws.com:
+ec2-54-237-143-174.compute-1.amazonaws.com: starting datanode, logging to /mnt/ephemeral-hdfs/logs/hadoop-root-datanode-ip-10-225-33-139.ec2.internal.out
+ec2-54-197-40-183.compute-1.amazonaws.com: Warning: $HADOOP_HOME is deprecated.
+ec2-54-197-40-183.compute-1.amazonaws.com:
+ec2-54-197-40-183.compute-1.amazonaws.com: starting datanode, logging to /mnt/ephemeral-hdfs/logs/hadoop-root-datanode-ip-10-237-157-26.ec2.internal.out
+ec2-54-234-7-59.compute-1.amazonaws.com: Warning: $HADOOP_HOME is deprecated.
+ec2-54-234-7-59.compute-1.amazonaws.com:
+ec2-54-234-7-59.compute-1.amazonaws.com: starting secondarynamenode, logging to /mnt/ephemeral-hdfs/logs/hadoop-root-secondarynamenode-ip-10-113-156-41.ec2.internal.out
+~/spark-ec2
+Setting up persistent-hdfs
+~/spark-ec2/persistent-hdfs ~/spark-ec2
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+RSYNC'ing /root/persistent-hdfs/conf to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+Formatting persistent HDFS namenode...
+Warning: $HADOOP_HOME is deprecated.
+
+14/10/10 16:37:39 INFO namenode.NameNode: STARTUP_MSG:
+/************************************************************
+STARTUP_MSG: Starting NameNode
+STARTUP_MSG:   host = ip-10-113-156-41.ec2.internal/10.113.156.41
+STARTUP_MSG:   args = [-format]
+STARTUP_MSG:   version = 1.0.4
+STARTUP_MSG:   build = https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1.0 -r 1393290; compiled by 'hortonfo' on Wed Oct  3 05:13:58 UTC 2012
+************************************************************/
+14/10/10 16:37:39 INFO util.GSet: VM type       = 64-bit
+14/10/10 16:37:39 INFO util.GSet: 2% max memory = 17.78 MB
+14/10/10 16:37:39 INFO util.GSet: capacity      = 2^21 = 2097152 entries
+14/10/10 16:37:39 INFO util.GSet: recommended=2097152, actual=2097152
+14/10/10 16:37:40 INFO namenode.FSNamesystem: fsOwner=root
+14/10/10 16:37:40 INFO namenode.FSNamesystem: supergroup=supergroup
+14/10/10 16:37:40 INFO namenode.FSNamesystem: isPermissionEnabled=false
+14/10/10 16:37:40 INFO namenode.FSNamesystem: dfs.block.invalidate.limit=100
+14/10/10 16:37:40 INFO namenode.FSNamesystem: isAccessTokenEnabled=false accessKeyUpdateInterval=0 min(s), accessTokenLifetime=0 min(s)
+14/10/10 16:37:40 INFO namenode.NameNode: Caching file names occuring more than 10 times
+14/10/10 16:37:40 INFO common.Storage: Image file of size 110 saved in 0 seconds.
+14/10/10 16:37:40 INFO common.Storage: Storage directory /vol/persistent-hdfs/dfs/name has been successfully formatted.
+14/10/10 16:37:40 INFO namenode.NameNode: SHUTDOWN_MSG:
+/************************************************************
+SHUTDOWN_MSG: Shutting down NameNode at ip-10-113-156-41.ec2.internal/10.113.156.41
+************************************************************/
+Persistent HDFS installed, won't start by default...
+~/spark-ec2
+Setting up spark-standalone
+RSYNC'ing /root/spark/conf to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+RSYNC'ing /root/spark-ec2 to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+ec2-54-237-143-174.compute-1.amazonaws.com: no org.apache.spark.deploy.worker.Worker to stop
+ec2-54-197-40-183.compute-1.amazonaws.com: no org.apache.spark.deploy.worker.Worker to stop
+no org.apache.spark.deploy.master.Master to stop
+starting org.apache.spark.deploy.master.Master, logging to /root/spark/sbin/../logs/spark-root-org.apache.spark.deploy.master.Master-1-ip-10-113-156-41.ec2.internal.out
+ec2-54-237-143-174.compute-1.amazonaws.com: starting org.apache.spark.deploy.worker.Worker, logging to /root/spark/sbin/../logs/spark-root-org.apache.spark.deploy.worker.Worker-1-ip-10-225-33-139.ec2.internal.out
+ec2-54-197-40-183.compute-1.amazonaws.com: starting org.apache.spark.deploy.worker.Worker, logging to /root/spark/sbin/../logs/spark-root-org.apache.spark.deploy.worker.Worker-1-ip-10-237-157-26.ec2.internal.out
+Setting up tachyon
+RSYNC'ing /root/tachyon to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+ec2-54-237-143-174.compute-1.amazonaws.com: Formatting Tachyon Worker @ ip-10-225-33-139.ec2.internal
+ec2-54-197-40-183.compute-1.amazonaws.com: Formatting Tachyon Worker @ ip-10-237-157-26.ec2.internal
+ec2-54-237-143-174.compute-1.amazonaws.com: Removing local data under folder: /mnt/ramdisk/tachyonworker/
+ec2-54-197-40-183.compute-1.amazonaws.com: Removing local data under folder: /mnt/ramdisk/tachyonworker/
+Formatting Tachyon Master @ ec2-54-234-7-59.compute-1.amazonaws.com
+Formatting JOURNAL_FOLDER: /root/tachyon/libexec/../journal/
+Formatting UNDERFS_DATA_FOLDER: hdfs://ec2-54-234-7-59.compute-1.amazonaws.com:9000/tachyon/data
+Formatting UNDERFS_WORKERS_FOLDER: hdfs://ec2-54-234-7-59.compute-1.amazonaws.com:9000/tachyon/workers
+TACHYON_LOGS_DIR: /root/tachyon/libexec/../logs
+Killed 0 processes
+Killed 0 processes
+ec2-54-237-143-174.compute-1.amazonaws.com: Killed 0 processes
+ec2-54-197-40-183.compute-1.amazonaws.com: Killed 0 processes
+Starting master @ ec2-54-234-7-59.compute-1.amazonaws.com
+ec2-54-237-143-174.compute-1.amazonaws.com: TACHYON_LOGS_DIR: /root/tachyon/libexec/../logs
+ec2-54-197-40-183.compute-1.amazonaws.com: TACHYON_LOGS_DIR: /root/tachyon/libexec/../logs
+ec2-54-237-143-174.compute-1.amazonaws.com: Formatting RamFS: /mnt/ramdisk (6154mb)
+ec2-54-197-40-183.compute-1.amazonaws.com: Formatting RamFS: /mnt/ramdisk (6154mb)
+ec2-54-237-143-174.compute-1.amazonaws.com: Starting worker @ ip-10-225-33-139.ec2.internal
+ec2-54-197-40-183.compute-1.amazonaws.com: Starting worker @ ip-10-237-157-26.ec2.internal
+Setting up ganglia
+RSYNC'ing /etc/ganglia to slaves...
+ec2-54-237-143-174.compute-1.amazonaws.com
+ec2-54-197-40-183.compute-1.amazonaws.com
+Shutting down GANGLIA gmond:                               [FAILED]
+Starting GANGLIA gmond:                                    [  OK  ]
+Shutting down GANGLIA gmond:                               [FAILED]
+Starting GANGLIA gmond:                                    [  OK  ]
+Connection to ec2-54-237-143-174.compute-1.amazonaws.com closed.
+Shutting down GANGLIA gmond:                               [FAILED]
+Starting GANGLIA gmond:                                    [  OK  ]
+Connection to ec2-54-197-40-183.compute-1.amazonaws.com closed.
+Shutting down GANGLIA gmetad:                              [FAILED]
+Starting GANGLIA gmetad:                                   [  OK  ]
+Stopping httpd:                                            [FAILED]
+Starting httpd:                                            [  OK  ]
+Connection to ec2-54-234-7-59.compute-1.amazonaws.com closed.
+Spark standalone cluster started at http://ec2-54-234-7-59.compute-1.amazonaws.com:8080
+Ganglia started at http://ec2-54-234-7-59.compute-1.amazonaws.com:5080/ganglia
+
+
+LOGON
+10:05:22/ec2 $ssh root@ec2-54-234-7-59.compute-1.amazonaws.com -i ~/.ssh/sparkeast.pem
+Last login: Fri Oct 10 16:32:57 2014 from c-50-174-18-128.hsd1.ca.comcast.net
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2013.03-release-notes/
+There are 64 security update(s) out of 274 total update(s) available
+Run "sudo yum update" to apply all updates.
+Amazon Linux version 2014.09 is available.
+
+
+SPARK-SHELL
+root@ip-10-113-156-41 spark]$ bin/spark-shell
+Spark assembly has been built with Hive, including Datanucleus jars on classpath
+14/10/10 17:18:44 INFO spark.SecurityManager: Changing view acls to: root,
+14/10/10 17:18:44 INFO spark.SecurityManager: Changing modify acls to: root,
+14/10/10 17:18:44 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(root, ); users with modify permissions: Set(root, )
+14/10/10 17:18:44 INFO spark.HttpServer: Starting HTTP Server
+14/10/10 17:18:44 INFO server.Server: jetty-8.y.z-SNAPSHOT
+14/10/10 17:18:44 INFO server.AbstractConnector: Started SocketConnector@0.0.0.0:41592
+14/10/10 17:18:44 INFO util.Utils: Successfully started service 'HTTP class server' on port 41592.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 1.1.0
+      /_/
+
+Using Scala version 2.10.4 (OpenJDK 64-Bit Server VM, Java 1.7.0_65)
+Type in expressions to have them evaluated.
+Type :help for more information.
+14/10/10 17:18:50 INFO spark.SecurityManager: Changing view acls to: root,
+14/10/10 17:18:50 INFO spark.SecurityManager: Changing modify acls to: root,
+14/10/10 17:18:50 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(root, ); users with modify permissions: Set(root, )
+14/10/10 17:18:51 INFO slf4j.Slf4jLogger: Slf4jLogger started
+14/10/10 17:18:51 INFO Remoting: Starting remoting
+14/10/10 17:18:51 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://sparkDriver@ip-10-113-156-41.ec2.internal:48662]
+14/10/10 17:18:51 INFO Remoting: Remoting now listens on addresses: [akka.tcp://sparkDriver@ip-10-113-156-41.ec2.internal:48662]
+14/10/10 17:18:51 INFO util.Utils: Successfully started service 'sparkDriver' on port 48662.
+14/10/10 17:18:51 INFO spark.SparkEnv: Registering MapOutputTracker
+14/10/10 17:18:51 INFO spark.SparkEnv: Registering BlockManagerMaster
+14/10/10 17:18:51 INFO storage.DiskBlockManager: Created local directory at /mnt/spark/spark-local-20141010171851-c51d
+14/10/10 17:18:51 INFO storage.DiskBlockManager: Created local directory at /mnt2/spark/spark-local-20141010171851-d627
+14/10/10 17:18:51 INFO util.Utils: Successfully started service 'Connection manager for block manager' on port 45580.
+14/10/10 17:18:51 INFO network.ConnectionManager: Bound socket to port 45580 with id = ConnectionManagerId(ip-10-113-156-41.ec2.internal,45580)
+14/10/10 17:18:51 INFO storage.MemoryStore: MemoryStore started with capacity 265.4 MB
+14/10/10 17:18:51 INFO storage.BlockManagerMaster: Trying to register BlockManager
+14/10/10 17:18:51 INFO storage.BlockManagerMasterActor: Registering block manager ip-10-113-156-41.ec2.internal:45580 with 265.4 MB RAM
+14/10/10 17:18:51 INFO storage.BlockManagerMaster: Registered BlockManager
+14/10/10 17:18:51 INFO spark.HttpFileServer: HTTP File server directory is /tmp/spark-66ed32b4-1070-41b1-a8dd-a8e83057bed8
+14/10/10 17:18:51 INFO spark.HttpServer: Starting HTTP Server
+14/10/10 17:18:51 INFO server.Server: jetty-8.y.z-SNAPSHOT
+14/10/10 17:18:51 INFO server.AbstractConnector: Started SocketConnector@0.0.0.0:46832
+14/10/10 17:18:51 INFO util.Utils: Successfully started service 'HTTP file server' on port 46832.
+14/10/10 17:18:51 INFO server.Server: jetty-8.y.z-SNAPSHOT
+14/10/10 17:18:51 INFO server.AbstractConnector: Started SelectChannelConnector@0.0.0.0:4040
+14/10/10 17:18:51 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+14/10/10 17:18:51 INFO ui.SparkUI: Started SparkUI at http://ec2-54-234-7-59.compute-1.amazonaws.com:4040
+14/10/10 17:18:52 INFO client.AppClient$ClientActor: Connecting to master spark://ec2-54-234-7-59.compute-1.amazonaws.com:7077...
+14/10/10 17:18:52 INFO cluster.SparkDeploySchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+14/10/10 17:18:52 INFO repl.SparkILoop: Created spark context..
+Spark context available as sc.
+
+scala> 14/10/10 17:18:52 INFO cluster.SparkDeploySchedulerBackend: Connected to Spark cluster with app ID app-20141010171852-0000
+14/10/10 17:18:52 INFO client.AppClient$ClientActor: Executor added: app-20141010171852-0000/0 on worker-20141010163811-ip-10-225-33-139.ec2.internal-51052 (ip-10-225-33-139.ec2.internal:51052) with 2 cores
+14/10/10 17:18:52 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20141010171852-0000/0 on hostPort ip-10-225-33-139.ec2.internal:51052 with 2 cores, 6.0 GB RAM
+14/10/10 17:18:52 INFO client.AppClient$ClientActor: Executor added: app-20141010171852-0000/1 on worker-20141010163811-ip-10-237-157-26.ec2.internal-57890 (ip-10-237-157-26.ec2.internal:57890) with 2 cores
+14/10/10 17:18:52 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20141010171852-0000/1 on hostPort ip-10-237-157-26.ec2.internal:57890 with 2 cores, 6.0 GB RAM
+14/10/10 17:18:52 INFO client.AppClient$ClientActor: Executor updated: app-20141010171852-0000/1 is now RUNNING
+14/10/10 17:18:52 INFO client.AppClient$ClientActor: Executor updated: app-20141010171852-0000/0 is now RUNNING
+14/10/10 17:18:56 INFO cluster.SparkDeploySchedulerBackend: Registered executor: Actor[akka.tcp://sparkExecutor@ip-10-237-157-26.ec2.internal:50766/user/Executor#-912565341] with ID 1
+14/10/10 17:18:57 INFO cluster.SparkDeploySchedulerBackend: Registered executor: Actor[akka.tcp://sparkExecutor@ip-10-225-33-139.ec2.internal:41650/user/Executor#-49526087] with ID 0
+14/10/10 17:18:57 INFO storage.BlockManagerMasterActor: Registering block manager ip-10-237-157-26.ec2.internal:41558 with 3.1 GB RAM
+14/10/10 17:18:57 INFO storage.BlockManagerMasterActor: Registering block manager ip-10-225-33-139.ec2.internal:37430 with 3.1 GB RAM
+
